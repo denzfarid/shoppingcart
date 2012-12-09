@@ -1,11 +1,3 @@
-<?php
-session_start();
-if(!session_is_registered("namauser")){
-  echo"<meta http-equiv=\"refresh\" content=\"0; URL=../../index.php\" />";
-}else{
-
-?>
-
 <script language="javascript">
 function validasi(form){
   if (form.nama_perusahaan.value == ""){
@@ -17,7 +9,11 @@ function validasi(form){
 }
 </script>
 
-<?
+<?php
+session_start();
+if(!session_is_registered("namauser")){
+  echo"<meta http-equiv=\"refresh\" content=\"0; URL=../../index.php\" />";
+}else{
 
 $aksi="modul/mod_pengiriman/aksi_pengiriman.php";
 $module=$_GET['module'];
@@ -25,8 +21,14 @@ $module=$_GET['module'];
 switch($_GET['act']){
   // Tampil Kategori
   default:
-    echo "<h2>Perusahaan Jasa Pengiriman</h2>
-          <input type=button class='tombol' value='Tambah Perusahaan Jasa Pengiriman' 
+
+
+    echo breadcrumb("Perusahaan Jasa Pengiriman");
+    echo rowfluid("Daftar Perusahaan Jasa Pengiriman");
+
+
+    echo "
+          <input type=button class='btn btn-primary' value='Tambah Perusahaan Jasa Pengiriman' 
           onclick=\"window.location.href='?module=$module&act=tambahperusahaan';\">";
     // Cek jikalau data dalam database kosong
     // Jika kosong
@@ -38,7 +40,7 @@ switch($_GET['act']){
     }else{
             // Jika tidak kosong
             
-              echo"<table>
+              echo"<table style='font-size: 13px; line-height: 18px; color: #333;' class='table table-striped'>
               <tr><th>No</th><th>Nama Perusahaan</th><th>Aksi</th></tr>"; 
         $tampil=mysql_query("SELECT * FROM shop_pengiriman ORDER BY id_perusahaan DESC");
         $no=1;
@@ -61,17 +63,23 @@ switch($_GET['act']){
         }
         echo "</table>";
     }
+
+    echo endbreadcrumb();
     break;
   
   // Form Tambah Perusahaan Pengiriman
   case "tambahperusahaan":
-    echo "<h2>Tambah Perusahaan Pengiriman Barang</h2>
+  echo breadcrumb("Perusahaan Jasa Pengiriman");
+    echo rowfluid("Tambah Perusahaan Jasa Pengiriman");
+
+    echo "
           <form method=POST action='$aksi?module=$module&act=input' enctype='multipart/form-data' onSubmit=\"return validasi(this)\">
-          <table>
-          <tr><td>Nama Perusahaan</td><td> : <input type=text name='nama_perusahaan'></td></tr>
+          <table class='table'>
+          <tr><td class='span4'>Nama Perusahaan</td><td> : <input type=text name='nama_perusahaan' class='span4'></td></tr>
           <tr><td colspan=2><input type=submit class='tombol' name=submit value=Simpan>
                             <input type=button class='tombol' value=Batal onclick=self.history.back()></td></tr>
           </table></form>";
+          echo endbreadcrumb();
      break;
   
   // Form Edit Perusahaan Pengiriman  
@@ -79,16 +87,20 @@ switch($_GET['act']){
     $edit=mysql_query("SELECT * FROM shop_pengiriman WHERE id_perusahaan='$_GET[id]'");
     $r=mysql_fetch_array($edit);
 
-    echo "<h2>Edit Perusahaan Pengiriman Barang</h2>
+echo breadcrumb("Perusahaan Jasa Pengiriman");
+    echo rowfluid("Edit Perusahaan Jasa Pengiriman");
+
+    echo "
           <form method=POST action=$aksi?module=$module&act=update enctype='multipart/form-data' onSubmit=\"return validasi(this)\">
           <input type=hidden name=id value='$r[id_perusahaan]'>
-          <table>
-          <tr><td>Nama Perusahaan</td><td> : <input type=text name='nama_perusahaan' value='$r[nama_perusahaan]'></td></tr>
+          <table class='table'>
+          <tr><td class='span4'>Nama Perusahaan</td><td> : <input type=text name='nama_perusahaan' value='$r[nama_perusahaan]' class='span4'></td></tr>
           
           <tr><td colspan=2>*) Apabila gambar tidak diubah, dikosongkan saja.</td></tr>
           <tr><td colspan=2><input type=submit class='tombol' value=Update>
                             <input type=button class='tombol' value=Batal onclick=self.history.back()></td></tr>
           </table></form>";
+          echo endbreadcrumb();
     break;  
 }
 

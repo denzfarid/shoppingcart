@@ -45,7 +45,7 @@ switch($_GET[act]){
           <table class='table'>
           <tr><td class='span2'>Sub Menu</td>     <td> : <input type=text name='nama_sub' class='span4'></td></tr>
           <tr><td class='span2'>Menu Utama</td>  <td> : 
-          <select name='menu_utama'>
+          <select class='span4' name='menu_utama'>
             <option value=0 selected>- Pilih Menu Utama -</option>";
             $tampil=mysql_query("SELECT * FROM mainmenu ORDER BY nama_menu");
             while($r=mysql_fetch_array($tampil)){
@@ -70,7 +70,7 @@ switch($_GET[act]){
           <input type=hidden name=id value=$r[id_sub]>
           <table class='table'>
           <tr><td class='span2'>Sub Menu</td>     <td> : <input type=text name='nama_sub' value='$r[nama_sub]' class='span4'></td></tr>
-          <tr><td class='span2'>Menu Utama</td>  <td> : <select name='menu_utama'>";
+          <tr><td class='span2'>Menu Utama</td>  <td> : <select class='span4' name='menu_utama'>";
  
           $tampil=mysql_query("SELECT * FROM mainmenu ORDER BY nama_menu");
           if ($r[id_main]==0){

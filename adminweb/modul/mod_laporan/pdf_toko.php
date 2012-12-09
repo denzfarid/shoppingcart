@@ -3,7 +3,8 @@ error_reporting(0);
 
 include ('class.ezpdf.php');
 include "rupiah.php";
-  
+include "../../../config/koneksi.php";
+
 $pdf = new Cezpdf();
  
 // Set margin dan font
@@ -18,7 +19,7 @@ $pdf->addJpegFromFile('logo.jpg',20,800,69);
 
 // Teks di tengah atas untuk judul header
 $pdf->addText(220, 820, 16,'<b>Laporan Penjualan</b>');
-$pdf->addText(200, 800, 14,'<b>Toko Handphone Lokomedia</b>');
+$pdf->addText(200, 800, 14,'<b>Toko F2 Furniture</b>');
 // Garis atas untuk header
 $pdf->line(10, 795, 578, 795);
 
@@ -37,22 +38,29 @@ $mulai=$_POST[thn_mulai].'-'.$_POST[bln_mulai].'-'.$_POST[tgl_mulai];
 $selesai=$_POST[thn_selesai].'-'.$_POST[bln_selesai].'-'.$_POST[tgl_selesai];
 
 // Koneksi ke database dan tampilkan datanya
-mysql_connect("localhost", "root", "");
-mysql_select_db("dbtoko");
+// mysql_connect("localhost", "root", "");
+// mysql_select_db("dbtoko");
 
 // Query untuk merelasikan kedua tabel di filter berdasarkan tanggal
-$sql = mysql_query("SELECT orders.id_orders as faktur,DATE_FORMAT(tgl_order, '%d-%m-%Y') as tanggal,
-                    nama_produk,jumlah,harga 
-                    FROM orders, orders_detail, produk  
-                    WHERE (orders_detail.id_produk=produk.id_produk) 
-                    AND (orders_detail.id_orders=orders.id_orders) 
-                    AND (orders.status_order='Lunas') 
-                    AND (orders.tgl_order BETWEEN '$mulai' AND '$selesai')");
+// $sql = mysql_query("SELECT orders.id_orders as faktur,DATE_FORMAT(tgl_order, '%d-%m-%Y') as tanggal,
+//                     nama_produk,jumlah,harga 
+//                     FROM orders, orders_detail, produk  
+//                     WHERE (orders_detail.id_produk=produk.id_produk) 
+//                     AND (orders_detail.id_orders=orders.id_orders) 
+//                     AND (orders.status_order='Lunas') 
+//                     AND (orders.tgl_order BETWEEN '$mulai' AND '$selesai')");
+
+$sql = mysql_query("SELECT a.id_orders as faktur, DATE_FORMAT(a.tgl_order, '%d-%m-%Y') as tanggal, nama_produk, jumlah, harga 
+                    FROM orders a 
+                    inner join orders_detail b on a.id_orders = b.id_orders 
+                    inner join produk c on b.id_produk = c.id_produk
+                    WHERE a.tgl_order BETWEEN '$mulai' AND '$selesai'");
+
 $jml = mysql_num_rows($sql);
 
 if ($jml > 1){
 $i = 1;
-while($r = mysql_fetch_array($sql)){
+while($r = mysql_fetch_array($sql)){ 
   $quantityharga=rp($r[jumlah]*$r[harga]);
   $hargarp=rp($r[harga]); 
   $faktur=$r[faktur];

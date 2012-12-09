@@ -6,9 +6,10 @@ if ($_SESSION[leveluser]=='admin'){
 }
 
 if ($m=mysql_fetch_array($sql)){  
-    echo "<li><a href='?module=password'><b>Ganti Password</b></a></li>";
+    echo "<li><a href='?module=password'><i class='icon-wrench'></i> Ganti Password</a></li>";
 	
-    echo "<li><a href='?module=modul'><b>Edit Modul Admin</b></a></li>";
+	//not use
+    //echo "<li><a href='?module=modul'><i class='icon-wrench'></i> Edit Modul Admin</a></li>";
   
 }
 ?>

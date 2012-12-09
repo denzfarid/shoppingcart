@@ -10,9 +10,13 @@ $aksi="modul/mod_produk/aksi_produk.php";
 switch($_GET[act]){
   // Tampil Produk
   default:
-    echo "<h2>Tambah Produk</h2>
-          <input type=button class='tombol' value='Tambahkan Produk' onclick=\"window.location.href='?module=produk&act=tambahproduk';\">
-          <table>
+
+    echo breadcrumb("Produk");
+    echo rowfluid("Daftar Produk");
+
+    echo "
+          <input type=button class='btn btn-primary' value='Tambahkan Produk' onclick=\"window.location.href='?module=produk&act=tambahproduk';\">
+          <table style='font-size: 13px; line-height: 18px; color: #333;' class='table table-striped'>
           <tr><th>No</th><th>Nama Produk</th><th>Berat(kg)</th><th>Harga</th><th>Diskon</th><th>Stok</th><th>Tgl. Masuk</th><th>Aksi</th></tr>";
 
     $p      = new Paging;
@@ -44,44 +48,54 @@ switch($_GET[act]){
     $linkHalaman = $p->navHalaman($_GET[halaman], $jmlhalaman);
 
     echo "<div id=paging>Hal: $linkHalaman</div><br>";
- 
+    
+    echo endbreadcrumb();
+     
     break;
   
   case "tambahproduk":
-    echo "<h2>Tambah Produk</h2>
+    echo breadcrumb("Produk");
+    echo rowfluid("Tambah Produk");
+
+    echo "
           <form method=POST action='$aksi?module=produk&act=input' enctype='multipart/form-data'>
-          <table>
-          <tr><td width=70>Nama Produk</td>     <td> : <input type=text name='nama_produk' size=60></td></tr>
-          <tr><td>Kategori</td>  <td> : 
-          <select name='kategori'>
+          <table class='table'>
+          <tr><td class='span2'>Nama Produk</td>     <td> : <input type=text name='nama_produk' class='span4'></td></tr>
+          <tr><td class='span2'>Kategori</td>  <td> : 
+          <select class='span4' name='kategori'>
             <option value=0 selected>- Pilih Kategori -</option>";
             $tampil=mysql_query("SELECT * FROM kategori ORDER BY nama_kategori");
             while($r=mysql_fetch_array($tampil)){
               echo "<option value=$r[id_kategori]>$r[nama_kategori]</option>";
             }
     echo "</select></td></tr>
-          <tr><td>Berat</td>     <td> : <input type=text name='berat' size=3></td></tr>
-          <tr><td>Harga</td>     <td> : <input type=text name='harga' size=10></td></tr>
-          <tr><td>diskon</td>     <td> : <input type=text name='diskon' size=3></td></tr>
-		  <tr><td>Stok</td>     <td> : <input type=text name='stok' size=3></td></tr>
-          <tr><td>Deskripsi</td>  <td> <textarea name='deskripsi' style='width: 600px; height: 350px;'></textarea></td></tr>
-          <tr><td>Gambar</td>      <td> : <input type=file name='fupload' size=40> 
+          <tr><td class='span2'>Berat</td>     <td> : <input type=text name='berat' class='span4'></td></tr>
+          <tr><td class='span2'>Harga</td>     <td> : <input type=text name='harga' class='span4'></td></tr>
+          <tr><td class='span2'>diskon</td>     <td> : <input type=text name='diskon' class='span4'></td></tr>
+		      <tr><td class='span2'>Stok</td>     <td> : <input type=text name='stok' class='span4'></td></tr>
+          <tr><td class='span2'>Deskripsi</td>  <td> <textarea name='deskripsi' style='width: 600px; height: 350px;'></textarea></td></tr>
+          <tr><td class='span2'>Gambar</td>      <td> : <input type=file name='fupload' class='span4'> 
                                           <br>Tipe gambar harus JPG/JPEG dan ukuran lebar maks: 400 px</td></tr>
           <tr><td colspan=2><input type=submit class='tombol' value=Simpan>
                             <input type=button class='tombol' value=Batal onclick=self.history.back()></td></tr>
           </table></form>";
+          echo endbreadcrumb();
+    
      break;
     
   case "editproduk":
     $edit = mysql_query("SELECT * FROM produk WHERE id_produk='$_GET[id]'");
     $r    = mysql_fetch_array($edit);
 
-    echo "<h2>Edit Produk</h2>
+    echo breadcrumb("Produk");
+    echo rowfluid("Edit Produk");
+
+    echo "
           <form method=POST enctype='multipart/form-data' action=$aksi?module=produk&act=update>
           <input type=hidden name=id value=$r[id_produk]>
-          <table>
-          <tr><td width=70>Nama Produk</td>     <td> : <input type=text name='nama_produk' size=60 value='$r[nama_produk]'></td></tr>
-          <tr><td>Kategori</td>  <td> : <select name='kategori'>";
+          <table class='table'>
+          <tr><td class='span2'>Nama Produk</td>     <td> : <input type=text name='nama_produk' class='span4' value='$r[nama_produk]'></td></tr>
+          <tr><td>Kategori</td>  <td> : <select  class='span4' name='kategori'>";
  
           $tampil=mysql_query("SELECT * FROM kategori ORDER BY nama_kategori");
           if ($r[id_kategori]==0){
@@ -97,18 +111,21 @@ switch($_GET[act]){
             }
           }
     echo "</select></td></tr>
-          <tr><td>Berat</td>     <td> : <input type=text name='berat' value=$r[berat] size=3></td></tr>
-          <tr><td>Harga</td>     <td> : <input type=text name='harga' value=$r[harga] size=10></td></tr>
-		  <tr><td>Diskon</td>     <td> : <input type=text name='diskon' value=$r[diskon] size=3></td></tr>
-          <tr><td>Stok</td>     <td> : <input type=text name='stok' value=$r[stok] size=3></td></tr>
-          <tr><td>Deskripsi</td>   <td> <textarea name='deskripsi' style='width: 600px; height: 350px;'>$r[deskripsi]</textarea></td></tr>
-          <tr><td>Gambar</td>       <td> :  
+          <tr><td class='span2'>Berat</td>     <td> : <input type=text name='berat' value=$r[berat] class='span4'></td></tr>
+          <tr><td class='span2'>Harga</td>     <td> : <input type=text name='harga' value=$r[harga] class='span4'></td></tr>
+	        <tr><td class='span2'>Diskon</td>     <td> : <input type=text name='diskon' value=$r[diskon] class='span4'></td></tr>
+          <tr><td class='span2'>Stok</td>     <td> : <input type=text name='stok' value=$r[stok] class='span4'></td></tr>
+          <tr><td class='span2'>Deskripsi</td>   <td> <textarea name='deskripsi' style='width: 600px; height: 350px;'>$r[deskripsi]</textarea></td></tr>
+          <tr><td class='span2'>Gambar</td>       <td> :  
           <img src='../foto_produk/small_$r[gambar]'></td></tr>
-          <tr><td>Ganti Gbr</td>    <td> : <input type=file name='fupload' size=30> *)</td></tr>
+          <tr><td class='span2'>Ganti Gbr</td>    <td> : <input type=file name='fupload' size=30> *)</td></tr>
           <tr><td colspan=2>*) Apabila gambar tidak diubah, dikosongkan saja.</td></tr>
           <tr><td colspan=2><input type=submit class='tombol' value=Update>
                             <input type=button class='tombol' value=Batal onclick=self.history.back()></td></tr>
          </table></form>";
+
+         echo endbreadcrumb();
+    
     break;  
 }
 }

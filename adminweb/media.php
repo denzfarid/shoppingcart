@@ -1,6 +1,5 @@
 <?php
 session_start();
-error_reporting(0);
 
 if (empty($_SESSION['username']) AND empty($_SESSION['passuser'])){
 	echo "<link href='css/screen.css' rel='stylesheet' type='text/css'><link href='css/reset.css' rel='stylesheet' type='text/css'> 
@@ -32,13 +31,15 @@ else{
 <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
 
 <!-- Simplenso -->
+<!--<link rel="stylesheet" type="text/css" media="screen" href="//s3.amazonaws.com/wrapbootstrap/live/css/screen_preview.css">-->
 <link href="css/simplenso.css" rel="stylesheet">
-<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
+
+<!--<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
 <link rel="stylesheet" href="css/fancybox.css" type="text/css"/>
 <link rel="stylesheet" href="css/jquery.wysiwyg.css" type="text/css"/>
 <link rel="stylesheet" href="css/jquery.ui.css" type="text/css"/>
 <link rel="stylesheet" href="css/visualize.css" type="text/css"/>
-<link rel="stylesheet" href="css/visualize-light.css" type="text/css"/>
+<link rel="stylesheet" href="css/visualize-light.css" type="text/css"/>-->
 
   <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
   <!--[if lt IE 9]>
@@ -139,7 +140,7 @@ else{
       	<div class="well" style="padding: 8px 0;">
         <ul class="nav nav-list"> 
           <li class="nav-header">Menu Utama</li>
-   		  <?php include "menu.php"; ?>        
+   		     <?php include "menu.php"; ?>        
        
           <li class="nav-header">Modul Web</li>
           <?php include "menu2.php"; ?>
@@ -188,9 +189,9 @@ else{
     <!-- Bootstrap -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
 
-    <!--<script type="text/javascript" src="js/jquery.js"></script>-->
-	<script type="text/javascript" src="js/jquery.visualize.js"></script>
-	<script type="text/javascript" src="js/jquery.wysiwyg.js"></script>
+  <!--<script type="text/javascript" src="js/jquery.js"></script>-->
+	<!--<script type="text/javascript" src="js/jquery.visualize.js"></script>
+	<script type="text/javascript" src="js/jquery.wysiwyg.js"></script>-->
 	
 	
 	<script type="text/javascript" src="js/jquery.fancybox.js"></script>
@@ -199,9 +200,9 @@ else{
 	<script type="text/javascript" src="js/jquery.jeditable.js"></script>
 	<script type="text/javascript" src="js/jquery.ui.js"></script>
 
-	<script type="text/javascript" src="js/excanvas.js"></script>
+	<!--<script type="text/javascript" src="js/excanvas.js"></script>
 	<script type="text/javascript" src="js/cufon.js"></script>
-	<script type="text/javascript" src="js/Geometr231_Hv_BT_400.font.js"></script>
+	<script type="text/javascript" src="js/Geometr231_Hv_BT_400.font.js"></script>-->
 
 	
 
@@ -215,28 +216,28 @@ else{
 		});*/
 	</script>
 
-<script language="javascript" type="text/javascript" src="../tinymcpuk/tiny_mce_src.js"></script>
+<!-- <script language="javascript" type="text/javascript" src="../tinymcpuk/tiny_mce_src.js"></script> -->
 <script type="text/javascript">
-	tinyMCE.init({
-			mode : "textareas",
-			theme : "advanced",
-			plugins : "table,youtube,advhr,advimage,advlink,emotions,flash,searchreplace,paste,directionality,noneditable,contextmenu",
-			theme_advanced_buttons1_add : "fontselect,fontsizeselect",
-			theme_advanced_buttons2_add : "separator,preview,zoom,separator,forecolor,backcolor,liststyle",
-			theme_advanced_buttons2_add_before: "cut,copy,paste,separator,search,replace,separator",
-			theme_advanced_buttons3_add_before : "tablecontrols,separator,youtube,separator",
-			theme_advanced_buttons3_add : "emotions,flash",
-			theme_advanced_toolbar_location : "top",
-			theme_advanced_toolbar_align : "left",
-			theme_advanced_statusbar_location : "bottom",
-			extended_valid_elements : "hr[class|width|size|noshade]",
-			file_browser_callback : "fileBrowserCallBack",
-			paste_use_dialog : false,
-			theme_advanced_resizing : true,
-			theme_advanced_resize_horizontal : false,
-			theme_advanced_link_targets : "_something=My somthing;_something2=My somthing2;_something3=My somthing3;",
-			apply_source_formatting : true
-	});
+	// tinyMCE.init({
+	// 		mode : "textareas",
+	// 		theme : "advanced",
+	// 		plugins : "table,youtube,advhr,advimage,advlink,emotions,flash,searchreplace,paste,directionality,noneditable,contextmenu",
+	// 		theme_advanced_buttons1_add : "fontselect,fontsizeselect",
+	// 		theme_advanced_buttons2_add : "separator,preview,zoom,separator,forecolor,backcolor,liststyle",
+	// 		theme_advanced_buttons2_add_before: "cut,copy,paste,separator,search,replace,separator",
+	// 		theme_advanced_buttons3_add_before : "tablecontrols,separator,youtube,separator",
+	// 		theme_advanced_buttons3_add : "emotions,flash",
+	// 		theme_advanced_toolbar_location : "top",
+	// 		theme_advanced_toolbar_align : "left",
+	// 		theme_advanced_statusbar_location : "bottom",
+	// 		extended_valid_elements : "hr[class|width|size|noshade]",
+	// 		file_browser_callback : "fileBrowserCallBack",
+	// 		paste_use_dialog : false,
+	// 		theme_advanced_resizing : true,
+	// 		theme_advanced_resize_horizontal : false,
+	// 		theme_advanced_link_targets : "_something=My somthing;_something2=My somthing2;_something3=My somthing3;",
+	// 		apply_source_formatting : true
+	// });
 
 	function fileBrowserCallBack(field_name, url, type, win) {
 		var connector = "../../filemanager/browser.html?Connector=connectors/php/connector.php";

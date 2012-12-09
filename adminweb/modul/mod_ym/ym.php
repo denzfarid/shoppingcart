@@ -3,10 +3,14 @@ $aksi="modul/mod_ym/aksi_ym.php";
 switch($_GET[act]){
   // Tampil YM
   default:
-    echo "<h2>Yahoo Messenger Status</h2>
-          <input type=button class=tombol value='Tambahkan User' 
+  echo breadcrumb("Yahoo Messenger Status");
+  echo rowfluid("Daftar Yahoo Messenger Status");
+  
+
+    echo "
+          <input type=button class='btn btn-primary' value='Tambahkan User' 
           onclick=\"window.location.href='?module=ym&act=tambahym';\">
-          <table>
+          <table style='font-size: 13px; line-height: 18px; color: #333;' class='table table-striped'>
           <tr><th>No</th><th>Nama</th><th>Username</th><th>Aksi</th></tr>"; 
     $tampil=mysql_query("SELECT * FROM mod_ym ORDER BY id DESC");
     $no=1;
@@ -20,19 +24,25 @@ switch($_GET[act]){
       $no++;
     }
     echo "</table>";
-	echo "";
+	//echo "";
+  echo endbreadcrumb();
     break;
   
   // Form Tambah YM
   case "tambahym":
-    echo "<h2>Tambah User Yahoo Messenger</h2>
+  echo breadcrumb("Yahoo Messenger Status");
+  echo rowfluid("Tambah Yahoo Messenger Status");
+
+    echo "
           <form method=POST action='$aksi?module=ym&act=input'>
-          <table>
-          <tr><td>Nama</td><td> : <input type=text name='nama'></td></tr>
-		  <tr><td>Username</td><td> : <input type=text name='username'></td></tr>
+          <table class='table'>
+          <tr><td class='span2'>Nama</td><td> : <input type=text name='nama' class='span4'></td></tr>
+		      <tr><td class='span2'>Username</td><td> : <input type=text name='username' class='span4'></td></tr>
           <tr><td colspan=2><input type=submit name=submit class=tombol value=Simpan>
                             <input type=button class=tombol value=Batal onclick=self.history.back()></td></tr>
           </table></form>";
+
+       echo   endbreadcrumb();
      break;
   
   // Form Edit YM  
@@ -40,15 +50,19 @@ switch($_GET[act]){
     $edit=mysql_query("SELECT * FROM mod_ym WHERE id='$_GET[id]'");
     $r=mysql_fetch_array($edit);
 
-    echo "<h2>Edit Yahoo Messenger</h2>
+  echo breadcrumb("Yahoo Messenger Status");
+  echo rowfluid("Edit Yahoo Messenger Status");
+
+    echo "
           <form method=POST action=$aksi?module=ym&act=update>
           <input type=hidden name=id value='$r[id]'>
-          <table>
-          <tr><td>Nama</td><td> : <input type=text name='nama' value='$r[nama]'></td></tr>
-		  <tr><td>Username</td><td> : <input type=text name='username' value='$r[username]'></td></tr>
+          <table class='table'>
+          <tr><td class='span2'>Nama</td><td> : <input type=text name='nama' value='$r[nama]' class='span4'></td></tr>
+		      <tr><td class='span2'>Username</td><td> : <input type=text name='username' value='$r[username]' class='span4'></td></tr>
           <tr><td colspan=2><input type=submit class=tombol value=Update>
                             <input type=button class=tombol value=Batal onclick=self.history.back()></td></tr>
           </table></form>";
+          echo endbreadcrumb();
     break;  
 }
 ?>

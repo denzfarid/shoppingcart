@@ -6,9 +6,14 @@ session_start();
   echo "<a href=../../index.php><b>LOGIN</b></a></center>";
 }
 else{
-   echo "<h2>Laporan Transaksi</h2>
+
+
+echo breadcrumb("Laporan");
+echo rowfluid("Laporan Transaksi");
+
+   echo "
           <form method=POST action='modul/mod_laporan/pdf_toko.php'>
-          <table>
+          <table class='table'>
           <tr><td>Dari Tanggal</td><td> : ";        
           combotgl(1,31,'tgl_mulai',$tgl_skrg);
           combonamabln(1,12,'bln_mulai',$bln_sekarang);
@@ -25,8 +30,8 @@ else{
           <input type=button class=tombol value=Batal onclick=self.history.back()></td></tr>
           </table>
           </form>";
-    break;
-  
+   
+echo endbreadcrumb();  
 
 }
 ?>

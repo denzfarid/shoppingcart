@@ -6,17 +6,17 @@ if ($_SESSION[leveluser]=='admin'){
 }
 
 if ($m=mysql_fetch_array($sql)){  
-echo "<li><a href='?module=menuutama'><b>Edit Menu Utama</b></a></li>";
-echo "<li><a href='?module=submenu'><b>Edit Sub Menu</b></a></li>";
-echo "<li><a href='?module=profil'><b>Edit Profil</b></a></li>"; 
-echo "<li><a href='?module=welcome'><b>Edit Selamat Datang</b></a></li>"; 
-echo "<li><a href='?module=carabeli'><b>Edit Cara Pembelian</b></a></li>"; 
-echo "<li><a href='?module=kategori'><b>Tambah Kategori Produk</b></a></li>"; 
-echo "<li><a href='?module=produk'><b>Tambah Produk</b></a></li>"; 
-echo "<li><a href='?module=order'><b>Lihat Order Masuk</b></a></li>"; 
-echo "<li><a href='?module=hubungi'><b>Lihat Pesan Masuk</b></a></li>"; 
-echo "<li><a href='?module=ongkoskirim'><b>Edit Ongkos Kirim</b></a></li>"; 
-echo "<li><a href='?module=jasapengiriman'><b>Edit Jasa Pengiriman</b></a></li>"; 
-echo "<li><a href='?module=laporan'><b>Lihat Laporan Transaksi</b></a></li>";   
+echo "<li><a href='?module=menuutama'><i class='icon-edit'></i> Menu Utama</a></li>";
+echo "<li><a href='?module=submenu'><i class='icon-edit'></i> Sub Menu</a></li>";
+echo "<li><a href='?module=profil'><i class='icon-edit'></i> Profil</a></li>"; 
+echo "<li><a href='?module=welcome'><i class='icon-edit'></i> Selamat Datang</a></li>"; 
+echo "<li><a href='?module=carabeli'><i class='icon-edit'></i> Cara Pembelian</a></li>"; 
+echo "<li><a href='?module=kategori'><i class='icon-edit'></i> Kategori Produk</a></li>"; 
+echo "<li><a href='?module=produk'><i class='icon-edit'></i> Produk</a></li>"; 
+echo "<li><a href='?module=order'><i class='icon-list'></i> Lihat Order Masuk</a></li>"; 
+echo "<li><a href='?module=hubungi'><i class='icon-list'></i> Lihat Pesan Masuk</a></li>"; 
+echo "<li><a href='?module=ongkoskirim'><i class='icon-edit'></i> Ongkos Kirim</a></li>"; 
+echo "<li><a href='?module=jasapengiriman'><i class='icon-edit'></i> Jasa Pengiriman</a></li>"; 
+echo "<li><a href='?module=laporan'><i class='icon-list'></i> Lihat Laporan Transaksi</a></li>";   
 }
 ?>

@@ -10,9 +10,12 @@ $aksi="modul/mod_order/aksi_order.php";
 switch($_GET[act]){
   // Tampil Order
   default:
+    echo breadcrumb("Order Masuk");
+    echo rowfluid("Daftar Order Masuk");
+
     echo "<form action=modul/mod_order/aksi_alldel.php method=POST>";
-    echo "<h2>Order Masuk</h2>
-          <table>
+    echo "
+          <table style='font-size: 13px; line-height: 18px; color: #333;' class='table table-striped'>
           <tr><th>#</th><th>No.Order</th><th>Nama Konsumen</th><th>Tgl. Order</th><th>Jam</th><th>Status</th><th>Aksi</th></tr>";
 
     $p      = new Paging;
@@ -34,19 +37,22 @@ switch($_GET[act]){
       $no++;
     }
 	           
-    echo "<tr><td colspan=4 align=center>
-<input type=radio name=pilih onClick='for (i=0;i<$no;i++){document.getElementById(\"id\"+i).checked=true;}'>Check All 
-<input type=radio name=pilih onClick='for (i=0;i<$no;i++){document.getElementById(\"id\"+i).checked=false;}'>Uncheck All 
-
-</td></tr>
-<tr><td colspan=4 align=center><input type=submit class='tombol' value=Hapus></td>
-</tr></table></form>";
+    echo "<tr>
+            <td colspan='8' style='text-align: center;'>
+              <input type=radio name=pilih onClick='for (i=0;i<$no;i++){document.getElementById(\"id\"+i).checked=true;}'>Check All 
+              <input type=radio name=pilih onClick='for (i=0;i<$no;i++){document.getElementById(\"id\"+i).checked=false;}'>Uncheck All 
+            </td>
+          </tr>
+    <tr><td colspan='8' align=center><input type=submit class='tombol' value=Hapus></td>
+    </tr></table></form>";
 
     $jmldata = mysql_num_rows(mysql_query("SELECT * FROM orders"));
     $jmlhalaman  = $p->jumlahHalaman($jmldata, $batas);
     $linkHalaman = $p->navHalaman($_GET[halaman], $jmlhalaman);
 
     echo "<div class=paging>Hal: $linkHalaman</div><br>";
+
+    echo endbreadcrumb();
     break;
   
     
@@ -65,10 +71,14 @@ switch($_GET[act]){
 	   $pilihan_order .= ">$status</option>\r\n";
     }
 
-    echo "<h2>Detail Order</h2>
+    echo breadcrumb("Order Masuk");
+    echo rowfluid("Detail Order");
+
+
+    echo "
           <form method=POST action=$aksi?module=order&act=update>
           <input type=hidden name=id value=$r[id_orders]>
-          <table>
+          <table class='table'>
           <tr><td>No. Order</td>        <td> : $r[id_orders]</td></tr>
           <tr><td>Tgl. & Jam Order</td> <td> : $tanggal & $r[jam_order]</td></tr>
           <tr><td>Status Order      </td><td>: <select name=status_order>$pilihan_order</select> 
@@ -80,7 +90,7 @@ switch($_GET[act]){
                      WHERE orders_detail.id_produk=produk.id_produk 
                      AND orders_detail.id_orders='$_GET[id]'");
   
-  echo "<table border=0 width=500>
+  echo "<table class='table'>
         <tr><th>Nama Produk</th><th>Jumlah</th><th>Harga Satuan</th><th>Sub Total</th></tr>";
   
   while($s=mysql_fetch_array($sql2)){
@@ -140,13 +150,17 @@ echo "<tr><td colspan=3 align=right>Total : </td><td>Rp. <b>$total_rp</b></td></
           <tr><td colspan=2><input type=submit value=Kirim>
                             <input type=button value=Batal onclick=self.history.back()></td></tr>
           </table></form>";
-     break;
+      echo endbreadcrumb();
+  break;
     
   case "kirimemail":
-    mail($_POST[email],$_POST[subjek],$_POST[pesan],"From: email@artfurniture.com");
-    echo "<h2>Status Email</h2>
+    mail($_POST[email],$_POST[subjek],$_POST[pesan],"From: e.alzaidi@gmail.com");
+    echo breadcrumb("Order Masuk");
+    echo rowfluid("Status Email");
+    echo "
           <p>Email telah sukses terkirim ke tujuan</p>
           <p>[ <a href=javascript:history.go(-2)>Kembali</a> ]</p>";	 		  
+          echo endbreadcrumb();
     break;  
  }
 }

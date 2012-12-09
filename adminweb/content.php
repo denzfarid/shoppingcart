@@ -5,11 +5,17 @@ include "../config/fungsi_indotgl.php";
 include "../config/fungsi_combobox.php";
 include "../config/class_paging.php";
 include "../config/fungsi_rupiah.php";
+include "../config/fungsi_container.php";
+
 
 // Bagian Home
 if ($_GET[module]=='home'){
   if ($_SESSION['leveluser']=='admin'){
-  echo "<h2>Selamat Datang</h2>
+
+  echo breadcrumb("Home");
+  echo rowfluid("Selamat");
+
+  echo "
           <p>Hai <b>$_SESSION[namalengkap]</b>, selamat datang di halaman Administrator.<br> Silahkan klik menu pilihan yang berada 
           di sebelah kiri untuk mengelola konten website anda. </p>
           <p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p><p>&nbsp;</p>
@@ -18,6 +24,8 @@ if ($_GET[module]=='home'){
   echo " | "; 
   echo date("H:i:s");
   echo " WIB</p>";
+  
+  echo endbreadcrumb();
   }
 }
 
@@ -139,7 +147,7 @@ elseif ($_GET[module]=='laporan'){
 
 elseif ($_GET['module']=='jasapengiriman'){
 if ($_SESSION['leveluser']=='admin'){
-  require_once "modul/mod_pengiriman/pengiriman.php";
+  include "modul/mod_pengiriman/pengiriman.php";
   }
 }
 

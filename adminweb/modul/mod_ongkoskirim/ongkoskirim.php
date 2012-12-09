@@ -10,10 +10,15 @@ $aksi="modul/mod_ongkoskirim/aksi_ongkoskirim.php";
 switch($_GET[act]){
   // Tampil Ongkos Kirim
   default:
-    echo "<h2>Ongkos Kirim</h2>
-          <input type=button class='tombol' value='Tambah Ongkos Kirim' 
+  
+
+echo breadcrumb("Ongkos Kirim");
+echo rowfluid("Daftar Ongkos Kirim");
+
+    echo "
+          <input type=button class='btn btn-primary' value='Tambah Ongkos Kirim' 
           onclick=\"window.location.href='?module=ongkoskirim&act=tambahongkoskirim';\">
-          <table>
+          <table style='font-size: 13px; line-height: 18px; color: #333;' class='table table-striped'>
           <tr><th>No</th><th>Nama Kota</th><th>Jasa Pengiriman</th><th>Ongkos Kirim</th><th>Aksi</th></tr>"; 
     $tampil=mysql_query("SELECT * FROM kota,shop_pengiriman where kota.id_perusahaan=shop_pengiriman.id_perusahaan ORDER BY shop_pengiriman.nama_perusahaan,kota.id_kota DESC");
     $no=1;
@@ -29,17 +34,21 @@ switch($_GET[act]){
       $no++;
     }
     echo "</table>";
+    echo endbreadcrumb();
     break;
   
   // Form Tambah Ongkos Kirim
   case "tambahongkoskirim":
-    echo "<h2>Tambah Ongkos Kirim</h2>
+  echo breadcrumb("Ongkos Kirim");
+  echo rowfluid("Tambah Ongkos Kirim");
+
+    echo "
           <form method=POST action='$aksi?module=ongkoskirim&act=input'>
-          <table>
-          <tr><td>Nama Kota</td><td> : <input type=text name='nama_kota'></td></tr>
-          <tr><td>Ongkos Kirim</td><td> : <input type=text name='ongkos_kirim' size=7></td></tr>
+          <table class='table'>
+          <tr><td class='span2'>Nama Kota</td><td> : <input type=text name='nama_kota' class='span4'></td></tr>
+          <tr><td class='span2'>Ongkos Kirim</td><td> : <input type=text name='ongkos_kirim' class='span4'></td></tr>
 	  <tr><td>Jasa Pengiriman</td>  <td> : 
-          <select name='perusahaan'>
+          <select name='perusahaan' class='span4'>
             <option value='' selected>- Pilih Jasa Pengiriman -</option>";
             $tampil=mysql_query("SELECT * FROM shop_pengiriman ORDER BY nama_perusahaan");
             while($r=mysql_fetch_array($tampil)){
@@ -49,6 +58,8 @@ switch($_GET[act]){
           <tr><td colspan=2><input type=submit name=submit class='tombol' value=Simpan>
                             <input type=button class='tombol' value=Batal onclick=self.history.back()></td></tr>
           </table></form>";
+
+          echo endbreadcrumb();
      break;
   
   // Form Edit Ongkos Kirim
@@ -56,14 +67,17 @@ switch($_GET[act]){
     $edit=mysql_query("SELECT * FROM kota,shop_pengiriman where kota.id_perusahaan=shop_pengiriman.id_perusahaan AND kota.id_kota='$_GET[id]'");
     $r=mysql_fetch_array($edit);
 
-    echo "<h2>Edit Ongkos Kirim</h2>
+  echo breadcrumb("Ongkos Kirim");
+  echo rowfluid("Edit Ongkos Kirim");
+
+    echo "
           <form method=POST action=$aksi?module=ongkoskirim&act=update>
           <input type=hidden name=id value='$r[id_kota]'>
-          <table>
-          <tr><td>Nama Kota</td><td> : <input type=text name='nama_kota' value='$r[nama_kota]'></td></tr>
-          <tr><td>Ongkos Kirim</td><td> : <input type=text name='ongkos_kirim' value='$r[ongkos_kirim]' size=7></td></tr>
-          <tr><td>Jasa Pengiriman</td>  <td> : 
-          <select name='perusahaan'>
+          <table class='table'>
+          <tr><td class='span2'>Nama Kota</td><td> : <input type=text name='nama_kota' value='$r[nama_kota]' class='span4'></td></tr>
+          <tr><td class='span2'>Ongkos Kirim</td><td> : <input type=text name='ongkos_kirim' value='$r[ongkos_kirim]' class='span4'></td></tr>
+          <tr><td class='span2'>Jasa Pengiriman</td>  <td> : 
+          <select class='span4'name='perusahaan'>
             <option value='' value=$r[id_perusahaan]>$r[nama_perusahaan]</option>";
             $tampil=mysql_query("SELECT * FROM shop_pengiriman ORDER BY nama_perusahaan");
             while($r2=mysql_fetch_array($tampil)){
@@ -73,6 +87,7 @@ switch($_GET[act]){
 	  <tr><td colspan=2><input type=submit class='tombol' value=Update>
                             <input type=button class='tombol' value=Batal onclick=self.history.back()></td></tr>
           </table></form>";
+          echo endbreadcrumb();
     break;  
 }
 }

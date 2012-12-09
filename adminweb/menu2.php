@@ -6,10 +6,10 @@ if ($_SESSION[leveluser]=='admin'){
 }
 
 if ($m=mysql_fetch_array($sql)){  
- echo "<li><a href='?module=header'><b>Ganti Header</b></a></li>";
-  echo "<li><a href='?module=ym'><b>Edit Costumer Online</b></a></li>";
-   echo "<li><a href='?module=bank'><b>Edit Rekening Bank</b></a></li>";
-    echo "<li><a href='?module=banner'><b>Edit Link Terkait</b></a></li>";
+ //echo "<li><a href='?module=header'><i class='icon-edit'></i> Header</a></li>";
+  echo "<li><a href='?module=ym'><i class='icon-edit'></i> Costumer Online</a></li>";
+   echo "<li><a href='?module=bank'><i class='icon-edit'></i> Rekening Bank</a></li>";
+    echo "<li><a href='?module=banner'><i class='icon-edit'></i> Link Terkait</a></li>";
   
   
 }
