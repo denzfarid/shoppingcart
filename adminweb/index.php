@@ -16,8 +16,6 @@ function validasi(form){
   return (true);
 }
 </script>
-
-<meta http-equiv="content-type" content="text/html;charset=UTF-8">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 <meta name="description"  content=""/>
@@ -27,9 +25,10 @@ function validasi(form){
 <meta http-equiv="imagetoolbar" content="no"/>
 <title>.::Halaman Administrator::.</title>
 <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
-<link rel="stylesheet" href="css/reset.css" type="text/css"/>
-<link rel="stylesheet" href="css/screen.css" type="text/css"/>
+<!--<link rel="stylesheet" href="css/reset.css" type="text/css"/>-->
+<!--<link rel="stylesheet" href="css/screen.css" type="text/css"/>-->
 
+<link rel="stylesheet" href="css/login.css" type="text/css"/>
 
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/cufon.js"></script>
@@ -38,53 +37,25 @@ function validasi(form){
 
 </head>
 
-<body class="no-side">
-
-<div class="login-box">
-<div class="login-border">
-<div class="login-style">
-	<div class="login-header">
-		<div class="logo clear">
-			<div align="right"><span class="title"><img src="images/logo.png" alt="" width="185" height="80" class="picture" /></span></div>
-		</div>
-	</div>
-<form name="login" action="cek_login.php" method="POST" onSubmit="return validasi(this)">
-		
-		<div class="login-inside">
-			<div class="login-data">
-			  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td><div align="center">
-                    <table cellpadding="0" cellspacing="0">
-                      <tr>
-                        <td height="25">Username</td>
-                        <td> :
-                          <input type="text" name="username"  class="text" /></td>
-                      </tr>
-                      <tr>
-                        <td height="26">Password</td>
-                        <td> :
-                          <input type="password" class="text" name="password" /></td>
-                      </tr>
-                      
-                      <tr>
-                        <td colspan="2"><div align="right">
-                          <input name="submit"  class="submit" type="submit" value="LOGIN" />
-                        </div></td>
-                      </tr>
-                    </table>
-                  </div></td>
-                </tr>
-              </table>
-			</div>
-		</div>
-	  </form>
-
-</div>
-</div>
-</div>
-
+<body>
+  <div id="wrapper">
+    <div class="site clearfix">
+      <div class="container">
+        <div id="login" class="login_form">
+          <form name="login" action="cek_login.php" method="POST" onSubmit="return validasi(this)" accept-charset="utf-8">         
+            <h1>Login</h1>
+              <div class="formbody">
+                <label for="login_field"> Nama pengguna<br>
+                <input type="text" name="username" value="" autocapitalize="off" tabindex="1" id="login_field" class="text" style="width: 21em;"></label> 
+                <label for="password"> Kata kunci<br> 
+                  <input type="password" name="password" value="" autocomplete="disabled" class="text" id="password" style="width: 21em;" tabindex="2" size="20"></label> 
+                <label class="submit_btn"> <input type="submit" name="commit" value="Masuk" tabindex="3"></label>
+              </div>
+          </form>       
+        </div>
+      </div>
+    </div>
+    <div class="context-overlay"></div>
+  </div>
 </body>
-
-<meta http-equiv="content-type" content="text/html;charset=UTF-8">
 </html>

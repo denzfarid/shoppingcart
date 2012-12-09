@@ -67,7 +67,14 @@ $(document).ready(function() {
 // Halaman utama (Home)
 // done
 if ($_GET[module]=='store'){
-	$view ="<div class='span9'>Slide Show</div>";
+	//$view ="<div class='span9'>Slide Show</div>";
+	// $view ="<div class='span9'></div>";
+	$view ="<div class='span9'><ul class='breadcrumb'>
+				<li  class='active'>
+				<a href='index.php'>Home</a>
+				</li>
+				</ul></div>";
+				
 	$view .= "<div class='span7 popular_products'>
 			<h4>Popular products</h4><br>
 			<ul class='thumbnails'>";
@@ -1175,7 +1182,17 @@ elseif ($_GET[module]=='simpantransaksi'){
 			<p>- Data order dan nomor rekening transfer sudah terkirim ke email Anda. <br />
 			- Apabila Anda tidak melakukan pembayaran dalam 3 hari, maka data order Anda akan terhapus (transaksi batal)</p><br />";
 	}
-		
+	
+	$viewSimpanTransaksi .="<p>Data pemesan beserta ordernya adalah sebagai berikut: <br /></p>";
+	$viewSimpanTransaksi .="
+	<table class='table'>
+	<tr><td class='span2'>Nama           </td><td> : <b>$_POST[nama]</b> </td></tr>
+	<tr><td class='span2'>Alamat Lengkap </td><td> : $_POST[alamat] </td></tr>
+	<tr><td class='span2'>Telpon         </td><td> : $_POST[telpon] </td></tr>
+	<tr><td class='span2'>E-mail         </td><td> : $_POST[email] </td></tr>
+	<tr><td class='span2'>Nomor  Order:     </td><td> : <b>$id_orders</b></td></tr>
+	</table>";
+	  
 	$viewSimpanTransaksi .= '<div class="cart-header" style="padding:10px 15px 10px 0px;">Items in your Cart</div>';
 	$viewSimpanTransaksiTable = $viewSimpanTransaksiTableHeader;
 	$viewSimpanTransaksiTable .= $viewSimpanTransaksiTableItemOrder;

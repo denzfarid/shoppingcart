@@ -24,16 +24,16 @@ if ($ketemu > 0){
   $_SESSION[namalengkap]  = $r[nama_lengkap];
   $_SESSION[passuser]     = $r[password];
   $_SESSION[leveluser]    = $r[level];
-  
+
   header('location:media.php?module=home');
 }
 else{
-echo "<link href='css/screen.css' rel='stylesheet' type='text/css'><link href='css/reset.css' rel='stylesheet' type='text/css'>";
+  echo "<link href='css/screen.css' rel='stylesheet' type='text/css'><link href='css/reset.css' rel='stylesheet' type='text/css'>";
   echo "<center><br><br><br><br><br><br><b>LOGIN GAGAL! </b><br> 
-        Username atau Password Anda tidak benar.<br>
-        Atau account Anda sedang diblokir.<br><br>";
-		echo "<div> <a href='index.php'><img src='images/seru.png'  height=147 width=176><br><br></a>
-             </div>";
+  Username atau Password Anda tidak benar.<br>
+  Atau account Anda sedang diblokir.<br><br>";
+  echo "<div> <a href='index.php'><img src='images/seru.png'  height=147 width=176><br><br></a>
+  </div>";
   echo "<input type=button class='tombol' value='ULANGI LAGI' onclick=location.href='index.php'></a></center>";
 
 }
