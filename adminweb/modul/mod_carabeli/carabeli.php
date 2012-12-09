@@ -13,13 +13,18 @@ switch($_GET[act]){
     $sql  = mysql_query("SELECT * FROM modul WHERE id_modul='45'");
     $r    = mysql_fetch_array($sql);
 
-    echo "<h2>Cara Pembelian</h2>
+    echo breadcrumb("Cara Pembelian");
+    echo rowfluid("Edit Cara Pembelian");
+
+    echo "
           <form method=POST action=$aksi?module=carabeli&act=update>
           <input type=hidden name=id value=$r[id_modul]>
           <table>
          <tr><td><textarea name='isi' style='width: 600px; height: 350px;'>$r[static_content]</textarea></td></tr>
          <tr><td><input type=submit class=tombol value=Update></td></tr>
          </form></table>";
+         
+    echo endbreadcrumb();
     break;  
 }
 }

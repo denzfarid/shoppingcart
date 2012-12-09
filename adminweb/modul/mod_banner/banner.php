@@ -10,9 +10,14 @@ $aksi="modul/mod_banner/aksi_banner.php";
 switch($_GET[act]){
   // Tampil Banner
   default:
-    echo "<h2>Link Terkait</h2>
-          <input type=button  class=tombol value='Tambahkan Banner' onclick=location.href='?module=banner&act=tambahbanner'>
-          <table>
+
+    echo breadcrumb("Link Terkait");
+    echo rowfluid("Daftar Link Terkait");
+    
+
+    echo "
+          <input type='button'  class='btn btn-primary' value='Tambahkan Banner' onclick=location.href='?module=banner&act=tambahbanner'>
+          <table style='font-size: 13px; line-height: 18px; color: #333;' class='table table-striped'>
           <tr><th>No</th><th>Judul</th><th>URL</th><th>Tgl. Posting</th><th>Aksi</th></tr>";
     $tampil=mysql_query("SELECT * FROM banner ORDER BY id_banner DESC");
     $no=1;
@@ -28,32 +33,39 @@ switch($_GET[act]){
     $no++;
     }
     echo "</table>";
+    echo endbreadcrumb();
     break;
   
   case "tambahbanner":
-    echo "<h2>Tambah Banner</h2>
+    echo breadcrumb("Link Terkait");
+    echo rowfluid("Tambah Banner");
+    echo "
           <form method=POST action='$aksi?module=banner&act=input' enctype='multipart/form-data'>
-          <table>
-          <tr><td>Judul</td><td>  : <input type=text name='judul' size=30></td></tr>
-          <tr><td>Url</td><td>   : <input type=text name='url' size=50 value='http://'></td></tr>
-          <tr><td>Gambar</td><td> : <input type=file name='fupload' size=40></td></tr>
+          <table class='table'>
+          <tr><td class='span2'>Judul</td><td>  : <input type=text name='judul' class='span4'></td></tr>
+          <tr><td class='span2'>Url</td><td>   : <input type=text name='url' class='span4' value='http://'></td></tr>
+          <tr><td class='span2'>Gambar</td><td> : <input type=file name='fupload' class='span4'></td></tr>
           <tr><td colspan=2><input type=submit class=tombol value=Simpan>
                             <input type=button class=tombol value=Batal onclick=self.history.back()></td></tr>
           </table></form><br><br><br>";
+    echo endbreadcrumb();
+    
      break;
     
   case "editbanner":
     $edit = mysql_query("SELECT * FROM banner WHERE id_banner='$_GET[id]'");
     $r    = mysql_fetch_array($edit);
 
-    echo "<h2>Edit Banner</h2>
+    echo breadcrumb("Link Terkait");
+    echo rowfluid("Edit Banner");
+    echo "
           <form method=POST enctype='multipart/form-data' action=$aksi?module=banner&act=update>
           <input type=hidden name=id value=$r[id_banner]>
-          <table>
-          <tr><td>Judul</td><td>     : <input type=text name='judul' size=30 value='$r[judul]'></td></tr>
-          <tr><td>Url</td><td>      : <input type=text name='url' size=50 value='$r[url]'></td></tr>
-          <tr><td>Gambar</td><td>    : <img src='../foto_banner/$r[gambar]'></td></tr>
-          <tr><td>Ganti Gambar</td><td> : <input type=file name='fupload' size=30> *)</td></tr>
+          <table class='table'>
+          <tr><td class='span2'>Judul</td><td>     : <input type=text name='judul' class='span4' value='$r[judul]'></td></tr>
+          <tr><td class='span2'>Url</td><td>      : <input type=text name='url' class='span4' value='$r[url]'></td></tr>
+          <tr><td class='span2'>Gambar</td><td>    : <img src='../foto_banner/$r[gambar]'></td></tr>
+          <tr><td class='span2'>Ganti Gambar</td><td> : <input type=file name='fupload' class='span4'> *)</td></tr>
           <tr><td colspan=2>*) Apabila gambar tidak diubah, dikosongkan saja.</td></tr>
           <tr><td colspan=2><input type=submit class=tombol value=Update>
                             <input type=button class=tombol value=Batal onclick=self.history.back()></td></tr>
