@@ -59,6 +59,8 @@ $(document).ready(function() {
 			}
 		});
     });
+
+    $('.carousel').carousel({ interval: 2000});
 });
 
 </script>
@@ -69,12 +71,49 @@ $(document).ready(function() {
 if ($_GET[module]=='store'){
 	//$view ="<div class='span9'>Slide Show</div>";
 	// $view ="<div class='span9'></div>";
+
+$xy=1;
+$header=mysql_query("SELECT * FROM header ORDER BY id_header DESC LIMIT 4");
+while($b=mysql_fetch_array($header)){
+	if ($xy==2) {
+		# code...
+		$fotoSlideShow .= "<div class='active item active'><img width=940 src='header/$b[gambar]'></div>";
+	}
+		$fotoSlideShow .= "<div class='active item'><img width=940 src='header/$b[gambar]'></div>";
+	
+	$xy++;
+}
+
+
 	$view ="<div class='span9'><ul class='breadcrumb'>
 				<li  class='active'>
 				<a href='index.php'>Home</a>
 				</li>
-				</ul></div>";
-				
+				</ul>
+				<div id='myCarousel' class='carousel slide'>
+			  <!-- Carousel items -->
+			  <div class='carousel-inner'>
+				$fotoSlideShow
+			  </div>
+			  <!-- Carousel nav -->
+			  <a class='carousel-control left' href='#myCarousel' data-slide='prev'>&lsaquo;</a>
+			  <a class='carousel-control right' href='#myCarousel' data-slide='next'>&rsaquo;</a>
+			</div></div>";
+
+	// $viewSlideShow ="
+	// 		<div id='myCarousel' class='carousel slide'>
+	// 		  <!-- Carousel items -->
+	// 		  <div class='carousel-inner'>
+	// 		    <div class='active item'>…</div>
+	// 		    <div class='item'>…</div>
+	// 		    <div class='item'>…</div>
+	// 		  </div>
+	// 		  <!-- Carousel nav -->
+	// 		  <a class='carousel-control left' href='#myCarousel' data-slide='prev'>&lsaquo;</a>
+	// 		  <a class='carousel-control right' href='#myCarousel' data-slide='next'>&rsaquo;</a>
+	// 		</div>";
+
+	//$view .= ""$viewSlideShow"";
 	$view .= "<div class='span7 popular_products'>
 			<h4>Popular products</h4><br>
 			<ul class='thumbnails'>";
@@ -119,7 +158,30 @@ if ($_GET[module]=='store'){
 						";		  
 		}
 		  
-	$view.="<div class='span2'>$viewBank</div>";
+	$viewBank .="<br>";
+
+	$viewYM = "";
+      //ym
+	  $ym=mysql_query("select * from mod_ym order by id desc");
+	  while($t=mysql_fetch_array($ym)){
+	    $viewYM .= "<span class='table2'><b><br /><p>&bull; $t[nama] </b>
+	          <a href='ymsgr:sendIM?$t[username]'>
+	          <img src='http://opi.yahoo.com/online?u=$t[username]&amp;m=g&amp;t=1' border='0' height='16' width='64'></a>
+	          </p><br />";
+	  }
+      
+
+	
+
+	$viewSpan2="<div class='span2'>";
+
+	$viewSpan2 .= "$viewBank";
+	$viewSpan2 .= "$viewYM";
+	$viewSpan2 .="</div>";
+
+	//$view.="<div class='span2'>$viewBank</div>";
+	$view.= $viewSpan2;
+	
 	echo $view;
 }
 

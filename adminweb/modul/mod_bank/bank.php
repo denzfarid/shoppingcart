@@ -27,7 +27,7 @@ switch($_GET[act]){
                 <td>$r[no_rekening]</td>
                 <td>$r[pemilik]</td>
                 <td align=left>
-					<a class='btn btn-info'href=?module=bank&act=editbank&id=$r[id_bank]><i class='icon-edit icon-white'></i> Edit</a> 
+					<a class='btn btn-info' href=?module=bank&act=editbank&id=$r[id_bank]><i class='icon-edit icon-white'></i> Edit</a> 
 					<a class='btn btn-danger' href=$aksi?module=bank&act=hapus&id=$r[id_bank]><i class='icon-trash icon-white'></i> Hapus</a>
 		        </tr>";
     $no++;

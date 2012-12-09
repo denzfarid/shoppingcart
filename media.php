@@ -15,7 +15,7 @@
 <html lang="en"><head>
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta charset="utf-8">
-    <title>Bootstrap Shopping Cart</title>
+    <title>Faldo Furniture</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -47,7 +47,7 @@
 		<div class="row"><!-- start header -->
 			<div class="span4 logo">
 			<a href="index.php">
-				<h1>Bootstrap Cart</h1>
+				<h1>Faldo Furniture</h1>
 			</a>
 			</div>
 			<div class="span8">
@@ -172,7 +172,7 @@
 	<div class="row well no_margin_left">
 		<div class="span12">
 			<h4>Information</h4>
-			<p>Copyright ©2012 Develoved by: developer </p>
+			<p>Copyright ©2012 Develoved by: Faldo Furniture </p>
 		</div>
 	</div>
 </footer>
