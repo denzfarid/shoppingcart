@@ -18,8 +18,9 @@ switch($_GET[act]){
        echo "<tr><td>$no</td>
              <td>$r[nama]</td>
 			 <td>$r[username]</td>
-             <td><a href=?module=ym&act=editym&id=$r[id]><b>Edit</b></a> | 
-	               <a href=$aksi?module=ym&act=hapus&id=$r[id]><b>Hapus</b></a>
+             <td>
+				<a class='btn btn-info' href=?module=ym&act=editym&id=$r[id]><i class='icon-edit icon-white'></i> Edit</a>
+	            <a class='btn btn-danger' href=$aksi?module=ym&act=hapus&id=$r[id]><i class='icon-trash icon-white'></i> Hapus</a>
              </td></tr>";
       $no++;
     }

@@ -26,8 +26,9 @@ echo rowfluid("Daftar Pesan Masuk");
                 <td><a href=?module=hubungi&act=balasemail&id=$r[id_hubungi]>$r[email]</a></td>
                 <td>$r[subjek]</td>
                 <td>$tgl</a></td>
-                <td><a href=?module=hubungi&act=balasemail&id=$r[id_hubungi]><b>Baca</b></a> | 
-		               <a href=$aksi?module=hubungi&act=hapus&id=$r[id_hubungi]><b>Hapus</b></a></td></tr>";
+                <td>
+					<a class='btn btn-success' href=?module=hubungi&act=balasemail&id=$r[id_hubungi]><i class='icon-zoom-in icon-white'></i> Baca</a> 
+					<a class='btn btn-danger' href=$aksi?module=hubungi&act=hapus&id=$r[id_hubungi]> <i class='icon-trash icon-white'></i> Hapus</a></td></tr>";
                
     $no++;
     }

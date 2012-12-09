@@ -56,8 +56,8 @@ switch($_GET['act']){
             
            echo "<tr class='$warna'><td>$no</td>
                  <td>$r[nama_perusahaan]</td>
-                 <td><a href=?module=$module&act=editperusahaan&id=$r[id_perusahaan]><b>Edit</b></a> | 
-    	               <a href=$aksi?module=$module&act=hapus&id=$r[id_perusahaan]&namafile=$r[gambar]><b>Hapus</b></a>
+                 <td><a href=?module=$module&act=editperusahaan&id=$r[id_perusahaan] class='btn btn-info'> <i class='icon-edit icon-white'></i>  Edit</a> 
+    	               <a href=$aksi?module=$module&act=hapus&id=$r[id_perusahaan]&namafile=$r[gambar] class='btn btn-danger'> <i class='icon-trash icon-white'></i>Hapus</a>
                  </td></tr>";
           $no++;
         }

@@ -29,7 +29,7 @@ else
                  <td>$r[nama_menu]</td>
                  <td>$r[link]</td>
                  <td align=left>$r[aktif]</td>
-                 <td><a href=?module=menuutama&act=editmenuutama&id=$r[id_main]><b>Edit</b></a>
+                 <td><a href=?module=menuutama&act=editmenuutama&id=$r[id_main] class='btn btn-info'> <i class='icon-edit icon-white'></i> Edit</a>
                  </td></tr>";
           $no++;
         }

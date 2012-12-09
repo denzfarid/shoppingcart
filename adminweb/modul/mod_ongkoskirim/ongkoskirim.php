@@ -28,8 +28,8 @@ echo rowfluid("Daftar Ongkos Kirim");
              <td>$r[nama_kota]</td>
 	     <td>$r[nama_perusahaan]</td>
              <td align=left>$ongkos</td>
-             <td><a href=?module=ongkoskirim&act=editongkoskirim&id=$r[id_kota]><b>Edit</b></a> | 
-	               <a href=$aksi?module=ongkoskirim&act=hapus&id=$r[id_kota]><b>Hapus</b></a>
+             <td><a href=?module=ongkoskirim&act=editongkoskirim&id=$r[id_kota] class='btn btn-info'> <i class='icon-edit icon-white'></i> Edit</a> 
+	               <a href=$aksi?module=ongkoskirim&act=hapus&id=$r[id_kota] class='btn btn-danger'> <i class='icon-trash icon-white'></i> Hapus</a>
              </td></tr>";
       $no++;
     }

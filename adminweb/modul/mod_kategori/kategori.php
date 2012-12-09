@@ -18,8 +18,8 @@ switch($_GET[act]){
     while ($r=mysql_fetch_array($tampil)){
        echo "<tr><td>$no</td>
              <td>$r[nama_kategori]</td>
-             <td><a href=?module=kategori&act=editkategori&id=$r[id_kategori]><b>Edit</b></a> | 
-	               <a href=$aksi?module=kategori&act=hapus&id=$r[id_kategori]><b>Hapus</b></a>
+             <td><a href=?module=kategori&act=editkategori&id=$r[id_kategori] class='btn btn-info'> <i class='icon-edit icon-white'></i> Edit</a>  
+	               <a href=$aksi?module=kategori&act=hapus&id=$r[id_kategori] class='btn btn-danger'> <i class='icon-trash icon-white'></i> Hapus</a>
              </td></tr>";
       $no++;
     }

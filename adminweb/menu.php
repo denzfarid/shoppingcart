@@ -6,8 +6,8 @@ if ($_SESSION[leveluser]=='admin'){
 }
 
 if ($m=mysql_fetch_array($sql)){  
-echo "<li><a href='?module=menuutama'><i class='icon-edit'></i> Menu Utama</a></li>";
-echo "<li><a href='?module=submenu'><i class='icon-edit'></i> Sub Menu</a></li>";
+//echo "<li><a href='?module=menuutama'><i class='icon-edit'></i> Menu Utama</a></li>";
+//echo "<li><a href='?module=submenu'><i class='icon-edit'></i> Sub Menu</a></li>";
 echo "<li><a href='?module=profil'><i class='icon-edit'></i> Profil</a></li>"; 
 echo "<li><a href='?module=welcome'><i class='icon-edit'></i> Selamat Datang</a></li>"; 
 echo "<li><a href='?module=carabeli'><i class='icon-edit'></i> Cara Pembelian</a></li>"; 

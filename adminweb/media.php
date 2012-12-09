@@ -57,69 +57,19 @@ else{
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
-      <a class="brand" href="index.html">Simplenso</a>
+      <a class="brand" href="index.html">F2 Furnitures</a>
       <div class="btn-group pull-right">
         <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
           <i class="icon-user"></i> <? echo $_SESSION[namalengkap];?>
           <span class="caret"></span>
         </a>
         <ul class="dropdown-menu">
-          <li><a href="#">Profile</a></li>
-          <li><a href="#">Settings</a></li>
-          <li><a class="cookie-delete" href="#">Delete Cookies</a></li>
+          <li><a href="?module=profil">Profile</a></li>
           <li class="divider"></li>
-          <li><a href="login.html">Logout</a></li>
+          <li><a href="logout.php">Logout</a></li>
         </ul>
       </div>
-      <div class="nav-collapse">
-        <ul class="nav">
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    Messages <span class="label label-info">100</span>
-                    <b class="caret"></b>
-              </a>
-              <ul class="dropdown-menu">
-                  <li><a href="#">Message 1</a></li>
-                  <li><a href="#">Another message</a></li>
-                  <li><a href="#">Something else message</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#">Older messages...</a></li>
-              </ul>
-          </li>
-          <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      Settings
-                      <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Personal Info</a></li>
-                    <li><a href="#">Preferences</a></li>
-                    <li><a href="#">Alerts</a></li>
-                    <li><a class="cookie-delete" href="#">Delete Cookies</a></li>
-                </ul>
-          </li>
-          <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                      Theme
-                      <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                	<li><a class="theme-switch-default" href="#">Default</a></li>
-                    <li><a class="theme-switch-amelia" href="#">Amelia</a></li>
-                    <li><a class="theme-switch-cerulean" href="#">Cerulean</a></li>
-                    <li><a class="theme-switch-journal" href="#">Journal</a></li>                        
-                    <li><a class="theme-switch-readable" href="#">Readable</a></li>
-                    <li><a class="theme-switch-simplex" href="#">Simplex</a></li>
-                    <li><a class="theme-switch-slate" href="#">Slate</a></li>
-                    <li><a class="theme-switch-spacelab" href="#">Spacelab</a></li>
-                    <li><a class="theme-switch-spruce" href="#">Spruce</a></li>
-                    <li><a class="theme-switch-superhero" href="#">Superhero</a></li>
-                    <li><a class="theme-switch-united" href="#">United</a></li>
-                </ul>
-          </li>
-          <li><a href="#">Help</a></li>  
-        </ul>
-      </div><!--/.nav-collapse -->
+      <!--/.nav-collapse -->
     </div>
   </div>
 </div>
@@ -128,14 +78,14 @@ else{
   <div class="row-fluid">
     <!-- Side Navigation -->
     <div class="span2">
-      <div class="member-box round-all"> 
+      <!--<div class="member-box round-all"> 
         <a><img src="images/member_ph.png" class="member-box-avatar"></a>
         <span>
             <strong>Administrator</strong><br>
             <a><?echo $_SESSION[namalengkap]; ?></a><br>
             <span class="member-box-links"><a>Settings</a> | <a>Logout</a></span>
         </span>
-      </div>          
+      </div>-->
       <div class="sidebar-nav">
       	<div class="well" style="padding: 8px 0;">
         <ul class="nav nav-list"> 
@@ -189,83 +139,127 @@ else{
     <!-- Bootstrap -->
     <script src="bootstrap/js/bootstrap.min.js"></script>
 
-  <!--<script type="text/javascript" src="js/jquery.js"></script>-->
-	<!--<script type="text/javascript" src="js/jquery.visualize.js"></script>
-	<script type="text/javascript" src="js/jquery.wysiwyg.js"></script>-->
-	
-	
-	<script type="text/javascript" src="js/jquery.fancybox.js"></script>
-	<script type="text/javascript" src="js/jquery.idtabs.js"></script>
-	<script type="text/javascript" src="js/jquery.datatables.js"></script>
-	<script type="text/javascript" src="js/jquery.jeditable.js"></script>
-	<script type="text/javascript" src="js/jquery.ui.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+  	
+    <!--
+    <script type="text/javascript" src="js/jquery.visualize.js"></script>
+  	<script type="text/javascript" src="js/jquery.wysiwyg.js"></script>
+  	
+  	<script type="text/javascript" src="js/jquery.fancybox.js"></script>
+  	<script type="text/javascript" src="js/jquery.idtabs.js"></script>
+  	<script type="text/javascript" src="js/jquery.datatables.js"></script>
+  	<script type="text/javascript" src="js/jquery.jeditable.js"></script>
+  	<script type="text/javascript" src="js/jquery.ui.js"></script>
 
-	<!--<script type="text/javascript" src="js/excanvas.js"></script>
-	<script type="text/javascript" src="js/cufon.js"></script>
-	<script type="text/javascript" src="js/Geometr231_Hv_BT_400.font.js"></script>-->
+  	<script type="text/javascript" src="js/excanvas.js"></script>
+  	<script type="text/javascript" src="js/cufon.js"></script>
+  	<script type="text/javascript" src="js/Geometr231_Hv_BT_400.font.js"></script>
+    -->
+  	
 
-	
+  	<script language="javascript" type="text/javascript">
+  	    /*tinyMCE_GZ.init({
+  	    plugins : 'style,layer,table,save,advhr,advimage, ...',
+  			themes  : 'simple,advanced',
+  			languages : 'en',
+  			disk_cache : true,
+  			debug : false
+  		});*/
+  	</script>
 
-	<script language="javascript" type="text/javascript">
-	    /*tinyMCE_GZ.init({
-	    plugins : 'style,layer,table,save,advhr,advimage, ...',
-			themes  : 'simple,advanced',
-			languages : 'en',
-			disk_cache : true,
-			debug : false
-		});*/
-	</script>
+  <!--<script language="javascript" type="text/javascript" src="../tinymcpuk/tiny_mce_src.js"></script>-->
+  <script type="text/javascript">
+  	/*
+    tinyMCE.init({
+  			mode : "textareas",
+  			theme : "advanced",
+  			plugins : "table,youtube,advhr,advimage,advlink,emotions,flash,searchreplace,paste,directionality,noneditable,contextmenu",
+  			theme_advanced_buttons1_add : "fontselect,fontsizeselect",
+  			theme_advanced_buttons2_add : "separator,preview,zoom,separator,forecolor,backcolor,liststyle",
+  			theme_advanced_buttons2_add_before: "cut,copy,paste,separator,search,replace,separator",
+  			theme_advanced_buttons3_add_before : "tablecontrols,separator,youtube,separator",
+  			theme_advanced_buttons3_add : "emotions,flash",
+  			theme_advanced_toolbar_location : "top",
+  			theme_advanced_toolbar_align : "left",
+  			theme_advanced_statusbar_location : "bottom",
+  			extended_valid_elements : "hr[class|width|size|noshade]",
+  			file_browser_callback : "fileBrowserCallBack",
+  			paste_use_dialog : false,
+  			theme_advanced_resizing : true,
+  			theme_advanced_resize_horizontal : false,
+  			theme_advanced_link_targets : "_something=My somthing;_something2=My somthing2;_something3=My somthing3;",
+  			apply_source_formatting : true
+  	});
+    */
 
-<!-- <script language="javascript" type="text/javascript" src="../tinymcpuk/tiny_mce_src.js"></script> -->
-<script type="text/javascript">
-	// tinyMCE.init({
-	// 		mode : "textareas",
-	// 		theme : "advanced",
-	// 		plugins : "table,youtube,advhr,advimage,advlink,emotions,flash,searchreplace,paste,directionality,noneditable,contextmenu",
-	// 		theme_advanced_buttons1_add : "fontselect,fontsizeselect",
-	// 		theme_advanced_buttons2_add : "separator,preview,zoom,separator,forecolor,backcolor,liststyle",
-	// 		theme_advanced_buttons2_add_before: "cut,copy,paste,separator,search,replace,separator",
-	// 		theme_advanced_buttons3_add_before : "tablecontrols,separator,youtube,separator",
-	// 		theme_advanced_buttons3_add : "emotions,flash",
-	// 		theme_advanced_toolbar_location : "top",
-	// 		theme_advanced_toolbar_align : "left",
-	// 		theme_advanced_statusbar_location : "bottom",
-	// 		extended_valid_elements : "hr[class|width|size|noshade]",
-	// 		file_browser_callback : "fileBrowserCallBack",
-	// 		paste_use_dialog : false,
-	// 		theme_advanced_resizing : true,
-	// 		theme_advanced_resize_horizontal : false,
-	// 		theme_advanced_link_targets : "_something=My somthing;_something2=My somthing2;_something3=My somthing3;",
-	// 		apply_source_formatting : true
-	// });
+    /*
+  	function fileBrowserCallBack(field_name, url, type, win) {
+  		var connector = "../../filemanager/browser.html?Connector=connectors/php/connector.php";
+  		var enableAutoTypeSelection = true;
+  		
+  		var cType;
+  		tinymcpuk_field = field_name;
+  		tinymcpuk = win;
+  		
+  		switch (type) {
+  			case "image":
+  				cType = "Image";
+  				break;
+  			case "flash":
+  				cType = "Flash";
+  				break;
+  			case "file":
+  				cType = "File";
+  				break;
+  		}
+  		
+  		if (enableAutoTypeSelection && cType) {
+  			connector += "&Type=" + cType;
+  		}
+  		
+  		window.open(connector, "tinymcpuk", "modal,width=600,height=400");
 
-	function fileBrowserCallBack(field_name, url, type, win) {
-		var connector = "../../filemanager/browser.html?Connector=connectors/php/connector.php";
-		var enableAutoTypeSelection = true;
-		
-		var cType;
-		tinymcpuk_field = field_name;
-		tinymcpuk = win;
-		
-		switch (type) {
-			case "image":
-				cType = "Image";
-				break;
-			case "flash":
-				cType = "Flash";
-				break;
-			case "file":
-				cType = "File";
-				break;
-		}
-		
-		if (enableAutoTypeSelection && cType) {
-			connector += "&Type=" + cType;
-		}
-		
-		window.open(connector, "tinymcpuk", "modal,width=600,height=400");
-	}
-</script>
+  	}*/
+  </script>
+
+  <script type="text/javascript" src="js/tinymce/jscripts/tiny_mce/tiny_mce.js"></script>
+  <script type="text/javascript">
+    tinyMCE.init({
+            // General options
+            mode : "textareas",
+            theme : "advanced",
+            plugins : "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+            // Theme options
+            theme_advanced_buttons1 : "save,newdocument,|,bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,styleselect,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2 : "cut,copy,paste,pastetext,pasteword,|,search,replace,|,bullist,numlist,|,outdent,indent,blockquote,|,undo,redo,|,link,unlink,anchor,image,cleanup,help,code,|,insertdate,inserttime,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3 : "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,charmap,emotions,iespell,media,advhr,|,print,|,ltr,rtl,|,fullscreen",
+            theme_advanced_buttons4 : "insertlayer,moveforward,movebackward,absolute,|,styleprops,spellchecker,|,cite,abbr,acronym,del,ins,attribs,|,visualchars,nonbreaking,template,blockquote,pagebreak,|,insertfile,insertimage",
+            theme_advanced_toolbar_location : "top",
+            theme_advanced_toolbar_align : "left",
+            theme_advanced_statusbar_location : "bottom",
+            theme_advanced_resizing : true,
+
+            // Skin options
+            skin : "o2k7",
+            skin_variant : "silver",
+
+            // Example content CSS (should be your site CSS)
+            content_css : "css/content.css",
+
+            // Drop lists for link/image/media/template dialogs
+            template_external_list_url : "js/template_list.js",
+            external_link_list_url : "js/link_list.js",
+            external_image_list_url : "js/image_list.js",
+            media_external_list_url : "js/media_list.js",
+
+            // Replace values for the template plugin
+            template_replace_values : {
+                    username : "Some User",
+                    staffid : "991234"
+            }
+    });
+  </script>
 
 	<script type="text/javascript">
 		  var _gaq = _gaq || [];

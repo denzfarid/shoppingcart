@@ -27,8 +27,8 @@ switch($_GET[act]){
                 <td>$r[judul]</td>
                 <td><a href=$r[url] target=_blank>$r[url]</a></td>
                 <td>$tgl</td>
-                <td><a href=?module=banner&act=editbanner&id=$r[id_banner]><b>Edit</b></a> | 
-	                  <a href=$aksi?module=banner&act=hapus&id=$r[id_banner]><b>Hapus</b></a>
+                <td><a class='btn btn-info' href=?module=banner&act=editbanner&id=$r[id_banner]><i class='icon-edit icon-white'></i> Edit</a> 
+	                  <a class='btn btn-danger' href=$aksi?module=banner&act=hapus&id=$r[id_banner]><i class='icon-trash icon-white'></i> Hapus</a>
 		        </tr>";
     $no++;
     }
