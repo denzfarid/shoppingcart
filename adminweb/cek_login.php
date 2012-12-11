@@ -15,15 +15,15 @@ $r=mysql_fetch_array($login);
 // Apabila username dan password ditemukan
 if ($ketemu > 0){
   session_start();
-  session_register("namauser");
-  session_register("namalengkap");
-  session_register("passuser");
-  session_register("leveluser");
+  //session_register("namauser");
+  //session_register("namalengkap");
+  //session_register("passuser");
+  //session_register("leveluser");
 
-  $_SESSION[namauser]     = $r[username];
-  $_SESSION[namalengkap]  = $r[nama_lengkap];
-  $_SESSION[passuser]     = $r[password];
-  $_SESSION[leveluser]    = $r[level];
+  $_SESSION['namauser']     = $r[username];
+  $_SESSION['namalengkap']  = $r[nama_lengkap];
+  $_SESSION['passuser']     = $r[password];
+  $_SESSION['leveluser']    = $r[level];
 
   header('location:media.php?module=home');
 }
