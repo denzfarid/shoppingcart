@@ -1144,7 +1144,7 @@ elseif ($_GET[module] == 'simpantransaksi') {
 			<td>Rp. $harga,-</td>
 			<td>Rp. $subtotal_rp,-</td></tr>";
             
-            $pesan .= "$d[jumlah] $d[nama_produk] -> Rp. $harga -> Subtotal: Rp. $subtotal_rp <br />";
+            $pesan .= "$d[jumlah] -> $d[nama_produk] -> Rp. $harga -> Subtotal: Rp. $subtotal_rp <br />";
             $no++;
         }
         
@@ -1174,10 +1174,8 @@ elseif ($_GET[module] == 'simpantransaksi') {
         // Kirim email ke kustomer
         mail($_POST[email], $subjek, $pesan, $dari);
         
-        
         // Kirim email ke pengelola toko online
-        mail("rizal@artfurniture.com", $subjek, $pesan, $dari);
-        
+        //mail("rizal@artfurniture.com", $subjek, $pesan, $dari);
         
         $viewSimpanTransaksiTableFoot = "
 		<tr>
