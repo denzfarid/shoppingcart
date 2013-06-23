@@ -4,7 +4,7 @@ if ($_GET['module']=='detailproduk'){
   // Tampilkan detail produk berdasarkan produk yang dipilih
 	$detail=mysql_query("SELECT * FROM produk,kategori    
                       WHERE kategori.id_kategori=produk.id_kategori 
-                      AND id_produk='$_GET[id]'");
+                      AND id_produk='".intval($_GET[id])"'");
 	$d   = mysql_fetch_array($detail);
   $harga = format_rupiah($d['harga']);
   
