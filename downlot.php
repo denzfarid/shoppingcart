@@ -2,7 +2,7 @@
 include "config/koneksi.php";
 
 $direktori = "files/"; // folder tempat penyimpanan file yang boleh didownload
-$filename = $_GET['file'];
+$filename = basename($_GET['file']);
 
 $file_extension = strtolower(substr(strrchr($filename,"."),1));
 
@@ -28,7 +28,7 @@ if ($file_extension=='php'){
   exit;
 }
 else{
-  mysql_query("update download set hits=hits+1 where nama_file='$filename'");
+  mysql_query("update download set hits=hits+1 where nama_file='".mysql_real_escape_string($filename)."'");
 
   header("Content-Type: octet/stream");
   header("Pragma: private"); 
